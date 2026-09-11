@@ -2,10 +2,27 @@
 
 @theme {
   --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-canvas: light-dark(#faf9f7, #191816);
+  --color-sidebar: light-dark(#f1efeb, #23211f);
+  --color-raised: light-dark(#ffffff, #2b2926);
+  --color-muted: light-dark(#e8e5df, #34312d);
+  --color-ink: light-dark(#272522, #f5f3ee);
+  --color-secondary: light-dark(#6f6a62, #aaa59d);
+  --color-faint: light-dark(#9b968d, #817c74);
+  --color-accent: light-dark(#272522, #f5f3ee);
+  --color-accent-ink: light-dark(#ffffff, #191816);
+  --color-danger: light-dark(#a43932, #f0a49d);
+  --color-danger-surface: light-dark(#f8e9e6, #4b2724);
+  --color-focus: light-dark(#6f6a62, #aaa59d);
+  --radius-field: 0.75rem;
+  --radius-panel: 1.25rem;
 }
 
 @layer base {
-  html { background: #0A0A0A; }
+  html {
+    background: var(--color-canvas);
+    color-scheme: light;
+  }
   body { font-family: var(--font-sans); }
-  ::selection { background: #3f3f46; color: #fafafa; }
+  ::selection { background: var(--color-accent); color: var(--color-accent-ink); }
 }

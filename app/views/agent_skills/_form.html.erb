@@ -1,25 +1,25 @@
-<%= form_with model: [ @agent, skill ], url: skill.persisted? ? agent_skill_path(@agent, skill.name) : agent_skills_path(@agent), class: "mx-auto w-full max-w-2xl space-y-7" do |form| %>
+<%= form_with model: [ @agent, skill ], url: skill.persisted? ? agent_skill_path(@agent, skill.name) : agent_skills_path(@agent), class: "mx-auto w-full max-w-2xl space-y-4" do |form| %>
   <% if skill.errors.any? %>
-    <div class="rounded-xl bg-red-500/10 px-4 py-3 text-sm text-red-300"><%= skill.errors.full_messages.to_sentence %></div>
+    <div class="rounded-field bg-danger-surface px-3 py-2.5 text-sm text-danger"><%= skill.errors.full_messages.to_sentence %></div>
   <% end %>
 
   <div>
-    <%= form.label :name, class: "mb-2 block text-sm font-medium text-zinc-300" %>
-    <%= form.text_field :name, disabled: skill.persisted?, placeholder: "e.g. web-research", class: "w-full rounded-xl bg-white/[0.06] px-3.5 py-3 text-sm text-zinc-100 outline-none placeholder:text-zinc-600 disabled:text-zinc-500 focus:ring-2 focus:ring-white/30" %>
-    <p class="mt-2 text-xs leading-5 text-zinc-600">Lowercase letters, numbers, and hyphens. Pi uses this as the skill command name.</p>
+    <%= form.label :name, class: "mb-1.5 block text-sm font-medium text-ink" %>
+    <%= form.text_field :name, disabled: skill.persisted?, placeholder: "e.g. web-research", class: "w-full rounded-field bg-muted px-3 py-2.5 text-sm text-ink outline-none placeholder:text-faint disabled:text-faint focus:ring-2 focus:ring-focus" %>
+    <p class="mt-2 text-xs leading-5 text-secondary">Lowercase letters, numbers, and hyphens. Pi uses this as the skill command name.</p>
   </div>
 
   <div>
-    <%= form.label :description, class: "mb-2 block text-sm font-medium text-zinc-300" %>
-    <%= form.text_area :description, rows: 2, placeholder: "When should this skill be used?", class: "w-full resize-none rounded-xl bg-white/[0.06] px-3.5 py-3 text-sm leading-6 text-zinc-100 outline-none placeholder:text-zinc-600 focus:ring-2 focus:ring-white/30" %>
+    <%= form.label :description, class: "mb-1.5 block text-sm font-medium text-ink" %>
+    <%= form.text_area :description, rows: 2, placeholder: "When should this skill be used?", class: "w-full resize-none rounded-field bg-muted px-3 py-2.5 text-sm leading-6 text-ink outline-none placeholder:text-faint focus:ring-2 focus:ring-focus" %>
   </div>
 
   <div>
-    <%= form.label :instructions, "SKILL.md", class: "mb-2 block text-sm font-medium text-zinc-300" %>
-    <%= form.text_area :instructions, rows: 14, spellcheck: false, class: "w-full resize-y rounded-xl bg-white/[0.06] px-3.5 py-3 text-[13px] leading-6 text-zinc-200 outline-none placeholder:text-zinc-600 focus:ring-2 focus:ring-white/30" %>
+    <%= form.label :instructions, "SKILL.md", class: "mb-1.5 block text-sm font-medium text-ink" %>
+    <%= form.text_area :instructions, rows: 11, spellcheck: false, class: "w-full resize-y rounded-field bg-muted px-3 py-2.5 text-sm leading-6 text-ink outline-none placeholder:text-faint focus:ring-2 focus:ring-focus" %>
   </div>
 
   <div class="flex justify-end">
-    <%= form.submit skill.persisted? ? "Save skill" : "Create skill", class: "rounded-xl bg-white px-4 py-2.5 text-sm font-medium text-black transition hover:bg-zinc-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" %>
+    <%= form.submit skill.persisted? ? "Save skill" : "Create skill", class: "rounded-field bg-ink px-3.5 py-2 text-sm font-medium text-canvas transition hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus" %>
   </div>
 <% end %>

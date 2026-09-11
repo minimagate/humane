@@ -1,33 +1,35 @@
-<%= form_with model: agent, class: "mx-auto w-full max-w-2xl space-y-7" do |form| %>
+<% condensed = local_assigns.fetch(:condensed, false) %>
+
+<%= form_with model: agent, class: "mx-auto w-full max-w-2xl space-y-4" do |form| %>
   <% if agent.errors.any? %>
-    <div class="rounded-xl bg-red-500/10 px-4 py-3 text-sm text-red-300"><%= agent.errors.full_messages.to_sentence %></div>
+    <div class="rounded-field bg-danger-surface px-3 py-2.5 text-sm text-danger"><%= agent.errors.full_messages.to_sentence %></div>
   <% end %>
 
-  <div class="grid gap-5 sm:grid-cols-2">
+  <div class="grid gap-4 sm:grid-cols-2">
     <div>
-      <%= form.label :name, class: "mb-2 block text-sm font-medium text-zinc-300" %>
-      <%= form.text_field :name, autofocus: true, placeholder: "e.g. Ada", class: "w-full rounded-xl bg-white/[0.06] px-3.5 py-3 text-sm text-zinc-100 outline-none placeholder:text-zinc-600 focus:ring-2 focus:ring-white/30" %>
+      <%= form.label :name, class: "mb-1.5 block text-sm font-medium text-ink" %>
+      <%= form.text_field :name, autofocus: true, placeholder: "e.g. Ada", class: "w-full rounded-field bg-muted px-3 py-2.5 text-sm text-ink outline-none placeholder:text-faint focus:ring-2 focus:ring-focus" %>
     </div>
     <div>
-      <%= form.label :role, class: "mb-2 block text-sm font-medium text-zinc-300" %>
-      <%= form.text_field :role, placeholder: "e.g. Researcher", class: "w-full rounded-xl bg-white/[0.06] px-3.5 py-3 text-sm text-zinc-100 outline-none placeholder:text-zinc-600 focus:ring-2 focus:ring-white/30" %>
+      <%= form.label :role, class: "mb-1.5 block text-sm font-medium text-ink" %>
+      <%= form.text_field :role, placeholder: "e.g. Researcher", class: "w-full rounded-field bg-muted px-3 py-2.5 text-sm text-ink outline-none placeholder:text-faint focus:ring-2 focus:ring-focus" %>
     </div>
   </div>
 
   <div>
-    <%= form.label :description, class: "mb-2 block text-sm font-medium text-zinc-300" %>
-    <%= form.text_area :description, rows: 3, placeholder: "What is this teammate especially good at?", class: "w-full resize-none rounded-xl bg-white/[0.06] px-3.5 py-3 text-sm leading-6 text-zinc-100 outline-none placeholder:text-zinc-600 focus:ring-2 focus:ring-white/30" %>
+    <%= form.label :description, class: "mb-1.5 block text-sm font-medium text-ink" %>
+    <%= form.text_area :description, rows: 2, placeholder: "What is this teammate especially good at?", class: "w-full resize-none rounded-field bg-muted px-3 py-2.5 text-sm leading-6 text-ink outline-none placeholder:text-faint focus:ring-2 focus:ring-focus" %>
   </div>
 
   <div>
-    <div class="mb-2 flex items-center justify-between">
-      <%= form.label :system_prompt, "AGENTS.md", class: "block text-sm font-medium text-zinc-300" %>
-      <span class="text-xs text-zinc-600">System instructions</span>
+    <div class="mb-1.5 flex items-center justify-between">
+      <%= form.label :system_prompt, "AGENTS.md", class: "block text-sm font-medium text-ink" %>
+      <span class="text-xs text-secondary">System instructions</span>
     </div>
-    <%= form.text_area :system_prompt, rows: 12, spellcheck: false, class: "w-full resize-y rounded-xl bg-white/[0.06] px-3.5 py-3 text-[13px] leading-6 text-zinc-200 outline-none placeholder:text-zinc-600 focus:ring-2 focus:ring-white/30" %>
+    <%= form.text_area :system_prompt, rows: condensed ? 7 : 9, spellcheck: false, class: "w-full resize-y rounded-field bg-muted px-3 py-2.5 text-sm leading-6 text-ink outline-none placeholder:text-faint focus:ring-2 focus:ring-focus" %>
   </div>
 
   <div class="flex justify-end">
-    <%= form.submit agent.persisted? ? "Save agent" : "Create agent", class: "rounded-xl bg-white px-4 py-2.5 text-sm font-medium text-black transition hover:bg-zinc-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" %>
+    <%= form.submit agent.persisted? ? "Save agent" : "Create agent", class: "rounded-field bg-ink px-3.5 py-2 text-sm font-medium text-canvas transition hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus" %>
   </div>
 <% end %>

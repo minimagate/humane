@@ -1,28 +1,28 @@
-<aside class="<%= local_assigns.fetch(:display, "flex") %> w-full shrink-0 flex-col bg-[#0D0D0D] sm:w-[280px]">
-  <div class="flex items-center gap-2 px-2 py-4">
-    <div class="flex h-10 min-w-0 flex-1 items-center gap-2 rounded-xl bg-white/[0.055] px-3 text-zinc-500">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4 shrink-0" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4" stroke-linecap="round"/></svg>
-      <span class="truncate text-sm">Search agents</span>
-    </div>
-    <%= link_to new_agent_path, aria: { label: "New agent" }, class: "grid size-10 shrink-0 place-items-center rounded-xl bg-white/[0.055] text-zinc-400 transition hover:bg-white/[0.1] hover:text-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" do %>
+<aside class="<%= local_assigns.fetch(:display, "flex") %> w-full shrink-0 flex-col bg-sidebar px-3 py-3 sm:w-[248px] sm:px-4 sm:py-4">
+  <div class="flex h-10 items-center justify-between px-2">
+    <%= link_to agents_path, class: "text-[15px] font-semibold tracking-[-0.035em] text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus" do %>
+      Humane
+    <% end %>
+    <%= link_to new_agent_path, aria: { label: "New agent" }, class: "grid size-8 place-items-center rounded-full text-secondary transition hover:bg-raised hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus" do %>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-[18px]" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
     <% end %>
   </div>
 
-  <nav class="flex-1 px-2" aria-label="Agents">
+  <nav class="mt-5 flex-1" aria-label="Agents">
     <% if @agents.any? %>
+      <p class="px-2 pb-2 text-[11px] font-medium tracking-[0.08em] text-faint">AGENTS</p>
       <% @agents.each do |agent| %>
         <% conversation = agent.conversations.first %>
-        <%= link_to conversation ? agent_conversation_path(agent, conversation) : edit_agent_path(agent), class: class_names("mb-1 flex items-center gap-3 rounded-xl px-3 py-2.5 transition", "bg-white/[0.07]" => agent == @agent, "hover:bg-white/[0.05]" => agent != @agent) do %>
-          <%= image_tag "agent_avatars/#{agent.avatar}", alt: "", class: "size-8 shrink-0 rounded-full object-cover" %>
+        <%= link_to conversation ? agent_conversation_path(agent, conversation) : edit_agent_path(agent), class: class_names("mb-0.5 flex items-center gap-2.5 rounded-field px-2 py-1.5 transition", "bg-raised" => agent == @agent, "hover:bg-raised/70" => agent != @agent) do %>
+          <%= image_tag "agent_avatars/#{agent.avatar}", alt: "", class: "size-7 shrink-0 rounded-full object-cover" %>
           <span class="min-w-0">
-            <span class="block truncate text-sm font-medium text-zinc-200"><%= agent.name %></span>
-            <span class="block truncate text-xs text-zinc-500"><%= agent.role %></span>
+            <span class="block truncate text-sm font-medium text-ink"><%= agent.name %></span>
+            <span class="block truncate text-xs text-secondary"><%= agent.role %></span>
           </span>
         <% end %>
       <% end %>
     <% else %>
-      <div class="rounded-xl px-3 py-3 text-sm text-zinc-500">No agents yet</div>
+      <div class="px-2 py-3 text-sm leading-6 text-secondary">No agents yet. Create the first member of your team.</div>
     <% end %>
   </nav>
 

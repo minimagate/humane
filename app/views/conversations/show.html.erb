@@ -1,39 +1,43 @@
 <% content_for :title, "#{@agent.name} — Humane" %>
 
-<div class="flex min-h-dvh bg-[#0A0A0A]">
+<div class="flex min-h-dvh bg-canvas">
   <%= render "agents/sidebar", display: "hidden sm:flex" %>
 
-  <section class="flex min-w-0 flex-1 flex-col bg-[#0A0A0A]">
+  <section class="flex min-w-0 flex-1 flex-col">
     <%= turbo_stream_from @conversation %>
-    <header class="flex h-16 shrink-0 items-center justify-between border-b border-white/[0.08] px-5 sm:px-7">
+    <header class="flex h-14 shrink-0 items-center justify-between px-4 sm:px-6">
       <div class="flex min-w-0 items-center gap-3">
+        <%= link_to agents_path, aria: { label: "All agents" }, class: "grid size-8 shrink-0 place-items-center rounded-full text-secondary transition hover:bg-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus sm:hidden" do %>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <% end %>
         <%= image_tag "agent_avatars/#{@agent.avatar}", alt: "", class: "size-8 shrink-0 rounded-full object-cover" %>
         <div class="min-w-0">
-          <h1 class="truncate text-sm font-medium text-zinc-200"><%= @agent.name %></h1>
-          <p class="truncate text-xs text-zinc-500"><%= @agent.role %></p>
+          <h1 class="truncate text-sm font-semibold tracking-[-0.015em] text-ink"><%= @agent.name %></h1>
+          <p class="truncate text-xs text-secondary"><%= @agent.role %></p>
         </div>
       </div>
-      <%= link_to edit_agent_path(@agent), aria: { label: "Edit #{@agent.name}" }, class: "grid size-8 place-items-center rounded-full text-zinc-500 transition hover:bg-white/[0.08] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" do %>
+      <%= link_to edit_agent_path(@agent), aria: { label: "Edit #{@agent.name}" }, class: "grid size-8 place-items-center rounded-full text-secondary transition hover:bg-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus" do %>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="size-[17px]" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <% end %>
     </header>
 
     <div class="flex min-h-0 flex-1 flex-col">
-      <div id="messages" class="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-end gap-3 overflow-y-auto px-5 py-8 sm:px-8">
+      <div id="messages" class="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-end gap-4 overflow-y-auto px-4 py-5 sm:px-6 sm:py-6">
         <% if @messages.any? %>
-          <%= render partial: "message", collection: @messages %>
+          <%= render partial: "message", collection: @messages, locals: { agent: @agent } %>
         <% else %>
           <div class="m-auto max-w-sm text-center">
-            <p class="text-sm font-medium text-zinc-300">Start a conversation with <%= @agent.name %></p>
-            <% if @agent.description.present? %><p class="mt-2 text-sm leading-6 text-zinc-500"><%= @agent.description %></p><% end %>
+            <%= image_tag "agent_avatars/#{@agent.avatar}", alt: "", class: "mx-auto size-10 rounded-full object-cover" %>
+            <p class="mt-4 text-sm font-medium text-ink">Start a conversation with <%= @agent.name %></p>
+            <% if @agent.description.present? %><p class="mt-2 text-sm leading-6 text-secondary"><%= @agent.description %></p><% end %>
           </div>
         <% end %>
       </div>
 
-      <div class="mx-auto w-full max-w-3xl px-5 pb-5 sm:px-8 sm:pb-7">
-        <%= form_with model: [ @agent, @conversation, @message ], class: "flex items-end gap-2 rounded-2xl bg-white/[0.06] p-2 pl-4 focus-within:ring-2 focus-within:ring-white/20" do |form| %>
-          <%= form.text_area :content, rows: 1, autofocus: true, placeholder: "Message #{@agent.name}", class: "max-h-32 min-h-10 flex-1 resize-none bg-transparent py-2 text-sm leading-6 text-zinc-100 outline-none placeholder:text-zinc-600" %>
-          <%= form.button aria: { label: "Send message" }, class: "grid size-10 shrink-0 place-items-center rounded-xl bg-white text-zinc-900 transition hover:bg-zinc-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" do %>
+      <div class="mx-auto w-full max-w-2xl px-4 pb-4 sm:px-6 sm:pb-5">
+        <%= form_with model: [ @agent, @conversation, @message ], class: "flex items-end gap-2 rounded-panel bg-muted p-1.5 pl-3 focus-within:ring-2 focus-within:ring-focus" do |form| %>
+          <%= form.text_area :content, rows: 1, autofocus: true, placeholder: "Message #{@agent.name}", class: "max-h-32 min-h-9 flex-1 resize-none bg-transparent py-1.5 text-sm leading-6 text-ink outline-none placeholder:text-faint" %>
+          <%= form.button aria: { label: "Send message" }, class: "grid size-9 shrink-0 place-items-center rounded-field bg-ink text-canvas transition hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus" do %>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4" aria-hidden="true"><path d="m5 12 14-7-4 14-3-6-7-1Z" stroke-linejoin="round"/></svg>
           <% end %>
         <% end %>

@@ -1,12 +1,12 @@
-<dialog data-controller="modal" data-modal-open-value="<%= open ? "true" : "false" %>" data-modal-close-url-value="<%= agents_path %>" data-action="click->modal#closeOnBackdrop close->modal#restoreUrl" class="max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-2xl overflow-y-auto rounded-2xl border-0 bg-[#161616] p-0 text-zinc-100 backdrop:bg-black/70">
-  <div class="px-5 pb-6 pt-5 sm:px-7 sm:pb-8 sm:pt-6">
-    <div class="mb-6 flex items-center justify-between">
-      <h1 class="text-base font-medium text-zinc-100">New agent</h1>
-      <button type="button" data-action="modal#close" aria-label="Close" class="grid size-8 place-items-center rounded-full text-zinc-500 transition hover:bg-white/[0.08] hover:text-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+<dialog data-controller="modal" data-modal-open-value="<%= open ? "true" : "false" %>" data-modal-close-url-value="<%= agents_path %>" data-action="click->modal#closeOnBackdrop close->modal#restoreUrl" class="fixed left-1/2 top-1/2 m-0 max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-panel border-0 bg-raised p-0 text-ink backdrop:bg-ink/10">
+  <div class="px-4 py-4 sm:px-5 sm:py-5">
+    <div class="mb-4 flex items-center justify-between">
+      <h1 class="text-sm font-semibold tracking-[-0.02em]">New agent</h1>
+      <button type="button" data-action="modal#close" aria-label="Close" class="grid size-8 place-items-center rounded-full text-secondary transition hover:bg-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round"/></svg>
       </button>
     </div>
 
-    <%= render "form", agent: agent %>
+    <%= render "form", agent: agent, condensed: true %>
   </div>
 </dialog>

@@ -1,9 +1,9 @@
 <% content_for :title, "New skill — Humane" %>
 
-<div class="flex min-h-dvh bg-[#0A0A0A]">
+<div class="flex min-h-dvh bg-canvas">
   <%= render "agents/sidebar", display: "hidden sm:flex" %>
-  <section class="min-w-0 flex-1 bg-[#0A0A0A]">
-    <header class="flex h-16 items-center border-b border-white/[0.08] px-6 sm:px-8"><h1 class="text-sm font-medium text-zinc-200">New skill</h1></header>
-    <div class="px-6 py-10 sm:px-10"><%= render "form", skill: @skill %></div>
+  <section class="min-w-0 flex-1">
+    <header class="flex h-14 items-center px-5 sm:px-6"><h1 class="text-sm font-semibold tracking-[-0.015em] text-ink">New skill</h1></header>
+    <div class="mx-auto max-w-2xl px-5 py-5 sm:px-6 sm:py-6"><%= render "form", skill: @skill %></div>
   </section>
 </div>
