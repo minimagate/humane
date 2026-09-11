@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design"
+  short_description: "Refine purposeful application interfaces"
+  default_prompt: "Use $design to refine this interface with clear hierarchy, purposeful states, and resolved light and dark modes."

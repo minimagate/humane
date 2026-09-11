@@ -1,0 +1,4 @@
+interface:
+  display_name: "Migrations"
+  short_description: "Evolve the Rails database schema"
+  default_prompt: "Use $migrations to implement this Rails schema change with appropriate constraints, indexes, and reversible structure."

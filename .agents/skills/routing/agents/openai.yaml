@@ -1,0 +1,4 @@
+interface:
+  display_name: "Routing"
+  short_description: "Model resourceful Rails routes"
+  default_prompt: "Use $routing to map this Rails request as a compact resourceful route with clear controller ownership."

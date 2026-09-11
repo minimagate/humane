@@ -1,0 +1,4 @@
+interface:
+  display_name: "Active Storage"
+  short_description: "Handle Rails file attachments safely"
+  default_prompt: "Use $active-storage to implement this attachment flow with safe validation, processing, and cleanup."

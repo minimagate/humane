@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate Tests"
+  short_description: "Write minimal non-UI Rails tests"
+  default_prompt: "Use $generate-tests to add the smallest logic-focused Minitest coverage without UI or DOM tests."

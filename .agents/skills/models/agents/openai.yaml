@@ -1,0 +1,4 @@
+interface:
+  display_name: "Models"
+  short_description: "Shape Active Record domain behavior"
+  default_prompt: "Use $models to implement this model behavior with clear associations, validations, and lifecycle rules."

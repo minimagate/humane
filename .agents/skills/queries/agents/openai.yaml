@@ -1,0 +1,4 @@
+interface:
+  display_name: "Queries"
+  short_description: "Build efficient Active Record queries"
+  default_prompt: "Use $queries to implement this relation with correct scoping, loading, and database execution."

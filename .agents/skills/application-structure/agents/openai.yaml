@@ -1,0 +1,4 @@
+interface:
+  display_name: "Application Structure"
+  short_description: "Organize Rails code and autoloading"
+  default_prompt: "Use $application-structure to place and name this Rails code cleanly without unnecessary abstractions."

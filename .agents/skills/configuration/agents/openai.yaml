@@ -1,0 +1,4 @@
+interface:
+  display_name: "Configuration"
+  short_description: "Manage Rails configuration safely"
+  default_prompt: "Use $configuration to add this setting with correct environment, credential, and boot-time behavior."

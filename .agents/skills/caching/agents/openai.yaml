@@ -1,0 +1,4 @@
+interface:
+  display_name: "Caching"
+  short_description: "Add correct Rails caching"
+  default_prompt: "Use $caching to cache this behavior with explicit keys, ownership, and invalidation."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mailers"
+  short_description: "Build maintainable Action Mailer flows"
+  default_prompt: "Use $mailers to implement this email flow with clear inputs, delivery behavior, and tests."

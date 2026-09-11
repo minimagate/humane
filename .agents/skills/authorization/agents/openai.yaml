@@ -1,0 +1,4 @@
+interface:
+  display_name: "Authorization"
+  short_description: "Define Rails access policies and scopes"
+  default_prompt: "Use $authorization to implement this access rule with explicit Pundit policies, scopes, and focused tests."

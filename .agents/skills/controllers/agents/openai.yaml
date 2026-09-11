@@ -1,0 +1,4 @@
+interface:
+  display_name: "Controllers"
+  short_description: "Shape clear Rails request boundaries"
+  default_prompt: "Use $controllers to implement this Rails request flow with focused actions, parameters, responses, and authorization."

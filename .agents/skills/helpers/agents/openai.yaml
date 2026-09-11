@@ -1,0 +1,4 @@
+interface:
+  display_name: "Helpers"
+  short_description: "Keep Rails view helpers focused"
+  default_prompt: "Use $helpers to extract this presentation logic into a small, reusable Rails helper."

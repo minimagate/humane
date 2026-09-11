@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jobs"
+  short_description: "Build reliable Active Job workflows"
+  default_prompt: "Use $jobs to implement this background workflow with safe arguments, retries, and idempotency."

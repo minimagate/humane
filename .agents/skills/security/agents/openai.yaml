@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security"
+  short_description: "Harden Rails application boundaries"
+  default_prompt: "Use $security to review and implement this Rails change against common application security risks."
