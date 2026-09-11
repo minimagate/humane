@@ -1,0 +1,25 @@
+<% content_for :title, "#{@agent.name}'s skills — Humane" %>
+
+<div class="flex min-h-dvh bg-[#0A0A0A]">
+  <%= render "agents/sidebar", display: "hidden sm:flex" %>
+  <section class="min-w-0 flex-1 bg-[#0A0A0A]">
+    <header class="flex h-16 items-center justify-between border-b border-white/[0.08] px-6 sm:px-8">
+      <div><h1 class="text-sm font-medium text-zinc-200">Skills</h1><p class="text-xs text-zinc-500"><%= @agent.name %></p></div>
+      <%= link_to "New skill", new_agent_skill_path(@agent), class: "text-sm text-zinc-400 transition hover:text-white" %>
+    </header>
+    <div class="mx-auto max-w-2xl px-6 py-8 sm:px-10">
+      <% if @skills.any? %>
+        <div class="space-y-1">
+          <% @skills.each do |skill| %>
+            <%= link_to edit_agent_skill_path(@agent, skill.name), class: "block rounded-xl px-4 py-4 transition hover:bg-white/[0.05]" do %>
+              <p class="text-sm text-zinc-200"><%= skill.name %></p>
+              <p class="mt-1 text-sm leading-6 text-zinc-500"><%= skill.description %></p>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="py-20 text-center"><p class="text-sm font-medium text-zinc-300">No skills yet</p><p class="mt-2 text-sm text-zinc-500">Skills give <%= @agent.name %> specialized, reusable instructions.</p></div>
+      <% end %>
+    </div>
+  </section>
+</div>

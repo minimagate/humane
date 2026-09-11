@@ -1,0 +1,12 @@
+<dialog data-controller="modal" data-modal-open-value="<%= open ? "true" : "false" %>" data-modal-close-url-value="<%= agents_path %>" data-action="click->modal#closeOnBackdrop close->modal#restoreUrl" class="max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-2xl overflow-y-auto rounded-2xl border-0 bg-[#161616] p-0 text-zinc-100 backdrop:bg-black/70">
+  <div class="px-5 pb-6 pt-5 sm:px-7 sm:pb-8 sm:pt-6">
+    <div class="mb-6 flex items-center justify-between">
+      <h1 class="text-base font-medium text-zinc-100">New agent</h1>
+      <button type="button" data-action="modal#close" aria-label="Close" class="grid size-8 place-items-center rounded-full text-zinc-500 transition hover:bg-white/[0.08] hover:text-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <%= render "form", agent: agent %>
+  </div>
+</dialog>

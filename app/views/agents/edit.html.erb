@@ -1,0 +1,15 @@
+<% content_for :title, "#{@agent.name} — Humane" %>
+
+<div class="flex min-h-dvh bg-[#0A0A0A]">
+  <%= render "sidebar", display: "hidden sm:flex" %>
+  <section class="min-w-0 flex-1 bg-[#0A0A0A]">
+    <header class="flex h-16 items-center justify-between border-b border-white/[0.08] px-6 sm:px-8">
+      <div>
+        <h1 class="text-sm font-medium text-zinc-200"><%= @agent.name %></h1>
+        <p class="text-xs text-zinc-500"><%= @agent.role %></p>
+      </div>
+      <%= link_to "Skills", agent_skills_path(@agent), class: "text-sm text-zinc-500 transition hover:text-white" %>
+    </header>
+    <div class="px-6 py-10 sm:px-10"><%= render "form", agent: @agent %></div>
+  </section>
+</div>

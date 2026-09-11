@@ -1,0 +1,18 @@
+<% content_for :title, "Humane — your AI team" %>
+
+<div class="flex min-h-dvh bg-[#0A0A0A]">
+  <%= render "sidebar" %>
+  <section class="hidden min-w-0 flex-1 flex-col bg-[#0A0A0A] sm:flex">
+    <div class="flex flex-1 items-center justify-center px-6">
+      <div class="max-w-sm text-center">
+        <span class="mx-auto mb-5 grid size-11 place-items-center rounded-2xl bg-white/[0.06] text-zinc-300">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5" aria-hidden="true"><path d="M8 10h8M8 14h5M19 20l-3.5-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3 3v13Z" stroke-linejoin="round"/></svg>
+        </span>
+        <h1 class="text-lg font-medium tracking-[-0.025em] text-zinc-100">Build your team, one agent at a time</h1>
+        <p class="mt-2 text-sm leading-6 text-zinc-500">Each teammate gets focused instructions and a private workspace.</p>
+      </div>
+    </div>
+  </section>
+
+  <%= render "create_modal", agent: @agent, open: @show_agent_modal %>
+</div>
