@@ -2,6 +2,7 @@ class Agent < ApplicationRecord
   AVATAR_FILENAMES = (1..10).map { |number| format("avatar-%02d.avif", number) }.freeze
 
   has_many :conversations, dependent: :destroy
+  has_many :memories, class_name: "AgentMemory", dependent: :destroy
 
   before_create :assign_random_avatar
 
@@ -11,8 +12,13 @@ class Agent < ApplicationRecord
     Rails.root.join("storage", "agents", id.to_s)
   end
 
+  def computer_directory
+    runtime_directory.join("computer")
+  end
+
   def write_runtime_files!
     FileUtils.mkdir_p(runtime_directory.join(".agents", "skills"))
+    FileUtils.mkdir_p(computer_directory)
     File.write(runtime_directory.join("AGENTS.md"), system_prompt)
   end
 

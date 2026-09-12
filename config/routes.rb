@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root "agents#index"
   resources :agents, only: [ :index, :new, :create, :edit, :update ] do
+    resources :memories, only: [ :index, :destroy ], controller: "agent_memories"
     resources :skills, only: [ :index, :new, :create, :edit, :update ], controller: "agent_skills"
     resources :conversations, only: [ :show ] do
       resources :messages, only: [ :create ]

@@ -1,7 +1,4 @@
-<article id="<%= dom_id(message) %>" class="flex items-start gap-2.5 <%= message.user? ? "justify-end" : "justify-start" %>">
-  <% unless message.user? %>
-    <%= image_tag "agent_avatars/#{message.conversation.agent.avatar}", alt: "", class: "mt-1 size-6 shrink-0 rounded-full object-cover" %>
-  <% end %>
+<article id="<%= dom_id(message) %>" class="<%= "flex justify-end" if message.user? %>">
   <div class="max-w-[min(38rem,85%)] text-sm leading-6 <%= message.user? ? "rounded-panel bg-raised px-4 py-3 text-ink" : "py-1 text-ink" %>">
     <%= simple_format(message.content, {}, wrapper_tag: "div") %>
   </div>

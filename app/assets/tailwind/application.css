@@ -21,7 +21,7 @@
 @layer base {
   html {
     background: var(--color-canvas);
-    color-scheme: light;
+    color-scheme: dark;
   }
   body { font-family: var(--font-sans); }
   ::selection { background: var(--color-accent); color: var(--color-accent-ink); }

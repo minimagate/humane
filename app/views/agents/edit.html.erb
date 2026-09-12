@@ -8,7 +8,10 @@
         <h1 class="text-sm font-semibold tracking-[-0.015em] text-ink"><%= @agent.name %></h1>
         <p class="text-xs text-secondary"><%= @agent.role %></p>
       </div>
-      <%= link_to "Skills", agent_skills_path(@agent), class: "rounded-full px-3 py-1.5 text-sm text-secondary transition hover:bg-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus" %>
+      <div class="flex items-center gap-1">
+        <%= link_to "Memories", agent_memories_path(@agent), class: "rounded-full px-3 py-1.5 text-sm text-secondary transition hover:bg-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus" %>
+        <%= link_to "Skills", agent_skills_path(@agent), class: "rounded-full px-3 py-1.5 text-sm text-secondary transition hover:bg-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus" %>
+      </div>
     </header>
     <div class="mx-auto max-w-2xl px-5 py-5 sm:px-6 sm:py-6"><%= render "form", agent: @agent %></div>
   </section>

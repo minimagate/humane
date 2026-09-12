@@ -4,8 +4,9 @@ require "timeout"
 class Pi::Reply
   class Error < StandardError; end
 
-  def initialize(conversation)
-    @conversation = conversation
+  def initialize(message)
+    @message = message
+    @conversation = message.conversation
   end
 
   def call
@@ -51,14 +52,17 @@ class Pi::Reply
   def payload
     {
       agent_directory: @conversation.agent.runtime_directory.to_s,
+      computer_directory: @conversation.agent.computer_directory.to_s,
+      pi_session_directory: @conversation.pi_session_directory.to_s,
       agent_dir: Rails.root.join("storage", "pi").to_s,
       model: Rails.configuration.x.pi.model,
-      prompt: conversation_prompt
+      bootstrap_prompt: context.prompt,
+      continuation_prompt: context.continuation_prompt,
+      system_context: context.system_context
     }
   end
 
-  def conversation_prompt
-    transcript = @conversation.messages.order(:created_at).map { |message| "#{message.role}: #{message.content}" }.join("\n\n")
-    "Continue this conversation. Reply to the latest user message using your AGENTS.md instructions.\n\n#{transcript}"
+  def context
+    @context ||= Pi::Context.new(@message)
   end
 end
